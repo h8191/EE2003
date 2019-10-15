@@ -99,7 +99,7 @@ module Decoder (
 
                             3'b010: begin
                                     re<=15;
-                                    imm <= {{20{instr[31]}},instr[31:20]}<<2;
+                                    imm <= {{20{instr[31]}},instr[31:20]};//<<2;
                                     //imm <= {{18{instr[31]}},instr[31:20],2'b0}; 
                                     //imm <= {{20{instr[31]}},instr[31:20]};
                                     /*if(alu_out[1:0]==0) begin
@@ -129,7 +129,7 @@ module Decoder (
                                     default: we<=0;
                                     endcase
                             3'b010: begin //SW
-                                    imm <= {{20{instr[31]}},instr[31:25],instr[11:7]}<<2;
+                                    imm <= {{20{instr[31]}},instr[31:25],instr[11:7]};//<<2;
                                     /*if (alu_out[1:0]==0)
                                         we<=15; 
                                     else

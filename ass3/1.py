@@ -1,29 +1,3 @@
-def getops(x):
-    a = ((x&(0x7f<<25))>>25,(x&(7<<12))>>12,x&0x7f)
-    print([i for i in a])
-    a = [bin(i) for i in a]
-    return a
-
-def b1(x=0x03d71963):
-    #
-    x = bin(x)[2:].zfill(32)
-    a = (x[7:12],x[12:17],x[17:20],x[25:32],x[0]+x[24]+x[1:7]+x[20:24])
-    # print([eval('0b'+i) for i in a])
-    print({i:hex(eval('0b'+j)) for i,j in zip(['rs2','rs1','f3','op','imm'],a)})
-    return a
-
-def i1(x):
-    x = bin(x)[2:].zfill(32)
-    a = (x[:12],x[12:17],x[17:20],x[20:25],x[25:32])
-    print({i:j for i,j in zip(['imm','rs1','f3','rd','op'],a)})
-
-def r1(x):
-    x = bin(x)[2:].zfill(32)
-    a = (x[:7],x[7:12],x[12:17],x[17:20],x[20:25],x[25:32])
-    print({i:j for i,j in zip(['f7','rs2','rs1','f3','rd','op'],a)})
-
-print(hex(0x15+0x8))
-
 class reg(object):
     def __init__(self,value=None,bits=32):
         self.set(value,bits)
@@ -72,6 +46,9 @@ def encoder(**kwargs):
         
     if kwargs['type']=='JAL':
         instr[6:0] = 0x67
+        load_rd()
+        imm = reg(kwargs['imm'],20)
+        instr[31:12] = imm[20:20]+imm[10:1]+imm[11:11]+imm[19:12]
         pass
 
     if kwargs['type'] == 'JALR':
@@ -135,14 +112,55 @@ def encoder(**kwargs):
                         'XOR':0,'SRL':0,'SRA':0x20,'OR':0,'AND':0}[kwargs['type']]
     instr.num()
 
-encoder(type='LUI',imm=0x800,rd=16)
-encoder(type='BNE',imm=17,rs2=29,rs1=14)
-encoder(type='LUI',imm=0xff0,rd=29)
-encoder(type='ADDI',imm=0,rs1=0,rd=10)
-encoder(type='ADDI',imm=1,rs1=0,rd=1)
-encoder(type='ADDI',imm=28,rs1=1,rd=1)
-encoder(type='LW',imm=0,rs1=1,rd=14)
-encoder(type='LUI',imm=0xff0,rd=29)
-encoder(type='SUB',rs1=1,rs2=3,rd=2)
-encoder(type='ADD',rs1=5,rs2=2,rd=4)
+# print('ALU testbench')
+# encoder(type='LUI',rd=31,imm=0xfffff) #LUI x31 0xfffff
+# encoder(type='ADDI',rd=31,rs1=30,imm=0xfff) #ADDI x31 x31 0xfff
+# encoder(type='ADDI',rd=30,rs1=0,imm=0x0ee) #x30 = 0x00000eee
+# encoder(type='SUB',rd=1,rs1=0,rs2=31) #SUB x1 0 x31
+# encoder(type='XOR',rd=2,rs1=31,rs2=30)# x2 = =x31^x30
+# encoder(type='XORI',rd=3,rs1=31,imm=0x0ee)# x2 = =x31^x0xeee
+# encoder(type='BNE',rs1=2,rs2=3,imm=13)
+# encoder(type='BEQ',rs1=2,rs2=3,imm=13)
+# encoder(type='OR',rd=2,rs1=31,rs2=30)# x2 = =x31|x30
+# encoder(type='ORI',rd=3,rs1=31,imm=0xeee)# x2 = =x31|x0xeee
+# encoder(type='BLT',rs1=2,rs2=3,imm=12)
+# encoder(type='AND',rd=2,rs1=31,rs2=30)# x2 = =x31^x30
+# encoder(type='ANDI',rd=3,rs1=31,imm=0xeee)# x2 = =x31^x0xeee
+# encoder(type='BLTU',rs1=2,rs2=3,imm=12)
 
+# encoder()
+
+encoder(type='ADDI',rd=0,rs1=0,imm=0)
+encoder(type='ADD',rd=0,rs1=0,rs2=0)
+
+quit()
+print('load test bench')
+encoder(type='LBU',rs1=0,rd=1,imm=0)#0
+encoder(type='LBU',rs1=0,rd=2,imm=1)#0
+encoder(type='LBU',rs1=0,rd=3,imm=2)#0
+encoder(type='LBU',rs1=0,rd=4,imm=3)#0
+encoder(type='LHU',rs1=0,rd=5,imm=4)#1
+encoder(type='LHU',rs1=0,rd=6,imm=6)#1
+encoder(type='LW',rs1=0,rd=7,imm=8)#8
+
+encoder(type='SB',rs1=0,rs2=1,imm=12)#3
+encoder(type='SB',rs1=0,rs2=2,imm=13)
+encoder(type='SB',rs1=0,rs2=3,imm=14)
+encoder(type='SB',rs1=0,rs2=4,imm=15)
+encoder(type='SH',rs1=0,rs2=5,imm=16)#4
+encoder(type='SH',rs1=0,rs2=6,imm=18)
+encoder(type='SW',rs1=0,rs2=7,imm=20)#20
+
+encoder(type='LB',rs1=0,rd=8,imm=0)#0
+encoder(type='LB',rs1=0,rd=9,imm=1)
+encoder(type='LB',rs1=0,rd=10,imm=2)
+encoder(type='LB',rs1=0,rd=11,imm=3)
+encoder(type='LH',rs1=0,rd=12,imm=4)#1 4 or 5(works if misaligned access if forced to align)
+encoder(type='LH',rs1=0,rd=13,imm=6)#1 6 or 7
+
+encoder(type='SB',rs1=0,rs2=8,imm=24)#6
+encoder(type='SB',rs1=0,rs2=9,imm=25)
+encoder(type='SB',rs1=0,rs2=10,imm=26)
+encoder(type='SB',rs1=0,rs2=11,imm=27)
+encoder(type='SH',rs1=0,rs2=12,imm=28)#7 28 or 29
+encoder(type='SH',rs1=0,rs2=13,imm=30)#7 30 or 31
