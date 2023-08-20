@@ -1,0 +1,5 @@
+xst -intstyle ise -ifn "F:/Comorg submisssions/branch_prediction/top6.xst" -ofn "F:/Comorg submisssions/branch_prediction/top6.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc clk.ucf -p xc3s500e-fg320-4 "top6.ngc" top6.ngd  
+xst -intstyle ise -ifn "F:/Comorg submisssions/pipelined_correlated_branch_prediction/top6.xst" -ofn "F:/Comorg submisssions/pipelined_correlated_branch_prediction/top6.syr" 
+xst -intstyle ise -ifn "F:/Comorg submisssions/Assignment_6_Branch_prediction/pipelined_correlated_branch_prediction/top6.xst" -ofn "F:/Comorg submisssions/Assignment_6_Branch_prediction/pipelined_correlated_branch_prediction/top6.syr" 
+xst -intstyle ise -ifn "F:/Comorg submisssions/Assignment_6_Branch_prediction/pipelined_correlated_branch_prediction/top6.xst" -ofn "F:/Comorg submisssions/Assignment_6_Branch_prediction/pipelined_correlated_branch_prediction/top6.syr" 
