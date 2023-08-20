@@ -1,0 +1,33 @@
+#fibonaci
+encoder(type='ADDI',rd=31,rs1=0,imm=0)#ADDI x31 R0 1
+encoder(type='ADDI',rd=1,rs1=0,imm=0) #ADDI R1 R0 0 
+encoder(type='ADDI',rd=2,rs1=0,imm=1) #ADDI R2 R0 1
+encoder(type='ADDI',rd=4,rs1=0,imm=0) #ADDI R4 R0 0
+encoder(type='ADDI',rd=5,rs1=0,imm=10)#ADDI R5 R0 10
+encoder(type='ADDI',rd=6,rs1=0,imm=89)#ADDI R6 R0 55
+encoder(type='ADD',rd=3,rs1=1,rs2=2)  #ADD R3 R1 R2
+encoder(type='SB',rs2=3,rs1=4,imm=0)  #SB R3 R4 0
+encoder(type='ADDI',rd=1,rs1=2,imm=0) #ADDI R1 R2 0
+encoder(type='ADDI',rd=2,rs1=3,imm=0) #ADDI R2 R3 0
+encoder(type='ADDI',rd=4,rs1=4,imm=1) #ADDI R4 R4 1
+encoder(type='BNE',rs1=4,rs2=5,imm=0xff6) #BNE R4 R5 -10
+encoder(type='BEQ',rs1=3,rs2=6,imm=4)#BNE R# R6 +4
+encoder(type='ADDI',rd=31,rs1=0,imm=1)#ADDI x31 R0 1
+
+00000f93
+00000093
+00100113
+00000213
+00a00293
+05900313
+002081b3
+00320023
+00010093
+00018113
+00120213
+fe5216e3
+00618463
+00100f93
+00000013
+
+// ADDi r0 r0 0
