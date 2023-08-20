@@ -1,0 +1,1 @@
+-intstyle "ise" -incremental -lib "unisims_ver" -lib "unimacro_ver" -lib "xilinxcorelib_ver" -o "F:/Comorg submisssions/Assignment_6_Branch_prediction/pipelined_branch_target_buffer/cpu_tb_isim_beh.exe" -prj "F:/Comorg submisssions/Assignment_6_Branch_prediction/pipelined_branch_target_buffer/cpu_tb_beh.prj" "work.cpu_tb" "work.glbl" 

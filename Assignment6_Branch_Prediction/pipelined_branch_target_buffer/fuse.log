@@ -1,0 +1,47 @@
+Running: D:\apps\Xilinx\14.7\ISE_DS\ISE\bin\nt64\unwrapped\fuse.exe -intstyle ise -incremental -lib unisims_ver -lib unimacro_ver -lib xilinxcorelib_ver -o F:/Comorg submisssions/Assignment_6_Branch_prediction/pipelined_branch_target_buffer/cpu_tb_isim_beh.exe -prj F:/Comorg submisssions/Assignment_6_Branch_prediction/pipelined_branch_target_buffer/cpu_tb_beh.prj work.cpu_tb work.glbl 
+ISim P.20131013 (signature 0x7708f090)
+Number of CPUs detected in this system: 4
+Turning on mult-threading, number of parallel sub-compilation jobs: 8 
+Determining compilation order of HDL files
+Analyzing Verilog file "F:/Comorg submisssions/Assignment_6_Branch_prediction/pipelined_branch_target_buffer/shifter.v" into library work
+Analyzing Verilog file "F:/Comorg submisssions/Assignment_6_Branch_prediction/pipelined_branch_target_buffer/forwarder.v" into library work
+Analyzing Verilog file "F:/Comorg submisssions/Assignment_6_Branch_prediction/pipelined_branch_target_buffer/decoder.v" into library work
+Analyzing Verilog file "F:/Comorg submisssions/Assignment_6_Branch_prediction/pipelined_branch_target_buffer/btb.v" into library work
+Analyzing Verilog file "F:/Comorg submisssions/Assignment_6_Branch_prediction/pipelined_branch_target_buffer/alu32.v" into library work
+Analyzing Verilog file "F:/Comorg submisssions/Assignment_6_Branch_prediction/pipelined_branch_target_buffer/stage4.v" into library work
+Analyzing Verilog file "F:/Comorg submisssions/Assignment_6_Branch_prediction/pipelined_branch_target_buffer/stage3.v" into library work
+Analyzing Verilog file "F:/Comorg submisssions/Assignment_6_Branch_prediction/pipelined_branch_target_buffer/stage2.v" into library work
+Analyzing Verilog file "F:/Comorg submisssions/Assignment_6_Branch_prediction/pipelined_branch_target_buffer/stage1.v" into library work
+Analyzing Verilog file "F:/Comorg submisssions/Assignment_6_Branch_prediction/pipelined_branch_target_buffer/registerFile.v" into library work
+Analyzing Verilog file "F:/Comorg submisssions/Assignment_6_Branch_prediction/pipelined_branch_target_buffer/IMEM.v" into library work
+Analyzing Verilog file "F:/Comorg submisssions/Assignment_6_Branch_prediction/pipelined_branch_target_buffer/dmem.v" into library work
+Analyzing Verilog file "F:/Comorg submisssions/Assignment_6_Branch_prediction/pipelined_branch_target_buffer/CPU3.v" into library work
+Analyzing Verilog file "F:/Comorg submisssions/Assignment_6_Branch_prediction/pipelined_branch_target_buffer/arbiter.v" into library work
+Analyzing Verilog file "F:/Comorg submisssions/Assignment_6_Branch_prediction/pipelined_branch_target_buffer/accumulator.v" into library work
+Analyzing Verilog file "F:/Comorg submisssions/Assignment_6_Branch_prediction/pipelined_branch_target_buffer/cpu_tb.v" into library work
+Analyzing Verilog file "D:/apps/Xilinx/14.7/ISE_DS/ISE//verilog/src/glbl.v" into library work
+Starting static elaboration
+Completed static elaboration
+Compiling module cam_default
+Compiling module stage1
+Compiling module Decoder
+Compiling module stage2
+Compiling module RF
+Compiling module ALU32
+Compiling module forwarder
+Compiling module stage3
+Compiling module shifter
+Compiling module stage4
+Compiling module CPU
+Compiling module imem
+Compiling module arbiter
+Compiling module dmem
+Compiling module accumulator
+Compiling module cpu_tb
+Compiling module glbl
+Time Resolution for simulation is 1ps.
+Waiting for 3 sub-compilation(s) to finish...
+Compiled 17 Verilog Units
+Built simulation executable F:/Comorg submisssions/Assignment_6_Branch_prediction/pipelined_branch_target_buffer/cpu_tb_isim_beh.exe
+Fuse Memory Usage: 28316 KB
+Fuse CPU Usage: 1093 ms
